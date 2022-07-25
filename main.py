@@ -91,7 +91,7 @@ def janela_dados_fernando():
         [sg.Text('AVA2: '),sg.Input(key='ava2',size=(4,1), do_not_clear=False)],
         [sg.Text('AVD: '),sg.Input(key='avd',size=(4,1), do_not_clear=False)],
         [sg.Text('AVDS: '),sg.Input(key='avds',size=(4,1), do_not_clear=False)],
-        [sg.Button('Ok')]
+        [sg.Button('Voltar'),sg.Button('Ok')]
     ]
     return sg.Window('dados',layout,finalize='true')
 
@@ -108,7 +108,7 @@ def janela_dados_clarissa():
         [sg.Text('Prova 3: '),sg.Input(key='p3',size=(4,1), do_not_clear=False),sg.Checkbox('A matéria tem P3?',key='p3_check')],
         [sg.Text('Exame final: '),sg.Input(key='ef',size=(4,1), do_not_clear=False)],
         [sg.Text('Segunda época: '),sg.Input(key='seg',size=(4,1), do_not_clear=False)],
-        [sg.Button('Ok')]
+        [sg.Button('Voltar'),sg.Button('Ok')]
     ]
     return sg.Window('dados',layout,finalize='true')
 
@@ -185,6 +185,9 @@ while True:
         else:
             janela5 = janela_tabela()
             janela6.hide()
+    if window == janela6 and event == 'Voltar':
+        janela4.UnHide()
+        janela6.hide()
     
     # Janela 7, insere as matérias
     if window == janela7 and event == 'Ok':
@@ -195,3 +198,6 @@ while True:
         else:
             janela5 = janela_tabela()
             janela7.hide()
+    if window == janela7 and event == 'Voltar':
+        janela4.UnHide()
+        janela7.hide()

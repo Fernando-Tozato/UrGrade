@@ -57,7 +57,7 @@ def janela_tabela():
     tabela = mostra_notas(host,user,pw,database,table)
     
     if user == 'Fernando':
-        colunas = ['ID', 'Matéria', 'Cód.', 'Carga', 'AV1', 'AV2', 'AV3', 'AVD', 'AVDS', 'Média']
+        colunas = ['ID', 'Matéria', 'Cód.', 'Carga', 'AV1', 'AV2', 'AV3', 'AVA1', 'AVA2', 'AVD', 'AVDS', 'Média']
     elif user == 'Clarissa':
         colunas = ['ID', 'Matéria', 'Cód.', 'Carga', 'P1', 'P2', 'P3', 'Exame Final', 'Segunda Época', 'Média']
     

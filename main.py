@@ -11,7 +11,7 @@ database = 'notas'
 def janela_login():
     sg.theme('DarkBlue1')
     layout = [
-        [sg.Titlebar('Login')],
+        [sg.Titlebar('UrGrade')],
         [sg.Text('Para continuar, insira algumas informações: ')],
         [sg.Text('Usuário: '),sg.Input(key='user',size=(20,1), do_not_clear=False)],
         [sg.Text('Senha: '),sg.Input(key='senha',password_char='*',size=(20,1), do_not_clear=False)],
@@ -22,7 +22,7 @@ def janela_login():
 def janela_login_erro():
     sg.theme('DarkBlue1')
     layout = [
-        [sg.Titlebar('Erro de login')],
+        [sg.Titlebar('UrGrade')],
         [sg.Text('Para continuar, insira algumas informações: ')],
         [sg.Text('Usuário: '),sg.Input(key='user',size=(20,1), do_not_clear=False)],
         [sg.Text('Senha: '),sg.Input(key='senha',password_char='*',size=(20,1), do_not_clear=False)],
@@ -34,7 +34,7 @@ def janela_login_erro():
 def janela_admin():
     sg.theme('DarkBlue1')
     layout = [
-        [sg.Titlebar('Admin')],
+        [sg.Titlebar('UrGrade')],
         [sg.Text('Escrever código:')],
         [sg.Multiline(key='comandos',size=(50,20), do_not_clear=False)],
         [sg.Button('OK'),sg.Button('Voltar')]
@@ -44,10 +44,11 @@ def janela_admin():
 def janela_inicio():
     sg.theme('DarkBlue1')
     layout = [
-        [sg.Titlebar('Início')],
+        [sg.Titlebar('UrGrade')],
         [sg.Text('Seja bem-vindo! O que você gostaria de fazer?')],
         [sg.Button('Olhar as notas')],
-        [sg.Button('Inserir matérias')]
+        [sg.Button('Inserir matérias')],
+        [sg.Button('Trocar usuário')]
     ]
     return sg.Window('inicio',layout,finalize='true')
 
@@ -62,6 +63,7 @@ def janela_tabela():
         colunas = ['ID', 'Matéria', 'Cód.', 'Carga', 'P1', 'P2', 'P3', 'Exame Final', 'Segunda Época', 'Média']
     
     layout = [
+        [sg.Titlebar('UrGrade')],
         [sg.Text(calcula_cr(host,user,pw,database,table))],
         [sg.Table(
             values=tabela,
@@ -80,7 +82,7 @@ def janela_tabela():
 def janela_dados_fernando():
     sg.theme('DarkBlue1')
     layout = [
-        [sg.Titlebar('Dados')],
+        [sg.Titlebar('UrGrade')],
         [sg.Text('Se alguma das avaliações não foi realizada, coloque 0')],
         [sg.Text('Matéria: '),sg.Input(key='materia',size=(50,1), do_not_clear=False)],
         [sg.Text('Código: '),sg.Input(key='codigo',size=(10,1), do_not_clear=False)],
@@ -98,7 +100,7 @@ def janela_dados_fernando():
 def janela_dados_clarissa():
     sg.theme('DarkBlue1')
     layout = [
-        [sg.Titlebar('Dados')],
+        [sg.Titlebar('UrGrade')],
         [sg.Text('Se alguma das avaliações não foi realizada, coloque 0')],
         [sg.Text('Matéria: '),sg.Input(key='materia',size=(70,1), do_not_clear=False)],
         [sg.Text('Código: '),sg.Input(key='codigo',size=(10,1), do_not_clear=False)],
@@ -171,6 +173,10 @@ while True:
             janela7 = janela_dados_clarissa()
             janela4.hide()
     
+    if window == janela4 and event == 'Trocar usuário':
+        janela1.UnHide()
+        janela4.hide()
+    
     # Janela 5, mostra as notas
     if window == janela5 and event == 'Voltar':
         janela5.hide()
@@ -185,6 +191,7 @@ while True:
         else:
             janela5 = janela_tabela()
             janela6.hide()
+    
     if window == janela6 and event == 'Voltar':
         janela4.UnHide()
         janela6.hide()
@@ -198,6 +205,7 @@ while True:
         else:
             janela5 = janela_tabela()
             janela7.hide()
+    
     if window == janela7 and event == 'Voltar':
         janela4.UnHide()
         janela7.hide()
